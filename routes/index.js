@@ -7,16 +7,16 @@ const bcrypt = require('bcryptjs');
 
 //////////////////////////////////////////
 
+
+router.get("/", function (req,res) {
+  res.render("login");
+});
+
 router.get("/login", function (req,res) {
   res.render("login");
 });
 
-router.post("/login", passport.authenticate('local', {
-
-    successRedirect:'/home_page',
-    failureRedirect: '/login',
-    failureFlash: true
-}));
+////////////////////////////////////////////
 
 
 
@@ -30,9 +30,9 @@ router.get("/sign_up", function (req,res) {
 
 router.post("/sign_up", function(req,res){
   models.User.create({
-    displayname = req.body.displayname,
-    username = req.body.username,
-    password = req.body.password
+    dispalyname: req.body.dispalyname,
+    username: req.body.username,
+    password: req.body.password
 
   }).then(function(data){
     console.log(data);
